@@ -6,7 +6,7 @@ CC = cc
 
 FLAGS = -Wall -Wextra -Werror -fsanitize=thread
 
-SRC =  philo.c parsing.c start_emulation.c atoi.c utils.c
+SRC =  philo.c get_time.c parsing.c start_emulation.c atoi.c utils.c
 
 
 OBJS = ${SRC:.c=.o}
