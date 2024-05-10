@@ -6,7 +6,7 @@
 /*   By: vbarsegh <vbarsegh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 18:18:38 by vbarsegh          #+#    #+#             */
-/*   Updated: 2024/05/08 18:21:34 by vbarsegh         ###   ########.fr       */
+/*   Updated: 2024/05/08 18:30:50 by vbarsegh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,11 @@ void	my_usleep(long long time)
 	t2 = get_time();
 	while (get_time() - t2 <= time)
 		usleep(500);
+}
+
+void	get_last_eat_time_sem(t_philo *philo)
+{
+	sem_wait(philo->info->last_eat_time_sem);
+	philo->last_eat_time = get_time();
+	sem_post(philo->info->last_eat_time_sem);
 }

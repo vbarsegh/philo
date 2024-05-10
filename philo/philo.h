@@ -6,7 +6,7 @@
 /*   By: vbarsegh <vbarsegh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 18:12:06 by vbarsegh          #+#    #+#             */
-/*   Updated: 2024/05/08 18:15:06 by vbarsegh         ###   ########.fr       */
+/*   Updated: 2024/05/10 14:09:45 by vbarsegh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int			philo_take_a_forks(t_philo *philo,
 void		print_mutex(t_philo *philo, char *str);
 long long	get_time(void);
 void		get_last_eat_time_mutex(t_philo *philo);
-void		my_usleep(long long time);
+void		my_usleep(t_philo *philo, long long time);
 int			ft_strlen(const char *str);
 long		my_atol(char *str);
 int			parsing_and_init_info(int ac, char **av, t_info *info);

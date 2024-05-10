@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing_bonus.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vbarsegh <vbarsegh@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/08 18:27:12 by vbarsegh          #+#    #+#             */
+/*   Updated: 2024/05/08 18:27:34 by vbarsegh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_bonus.h"
 
 int	parsing_and_init_info(int ac, char **av, t_info *info)
@@ -24,11 +36,11 @@ int	parsing_and_init_info(int ac, char **av, t_info *info)
 int	sem_open_function(t_info *info)
 {
 	info->forks = sem_open("/philos_forks", O_CREAT, 0777, info->num_of_philos);
-	info->last_eat_time_sem = sem_open("/last_eat_time_sem",O_CREAT, 0777, 1);
-	info->current_meal_sem = sem_open("/current_meal_sem",O_CREAT, 0777, 1);
-	info->print_sem = sem_open("/print_sem",O_CREAT, 0777, 1);
-	info->is_died_sem = sem_open("/is_died_sem",O_CREAT, 0777, 1);
-	if (info->forks == SEM_FAILED || info->last_eat_time_sem == SEM_FAILED 
+	info->last_eat_time_sem = sem_open("/last_eat_time_sem", O_CREAT, 0777, 1);
+	info->current_meal_sem = sem_open("/current_meal_sem", O_CREAT, 0777, 1);
+	info->print_sem = sem_open("/print_sem", O_CREAT, 0777, 1);
+	info->is_died_sem = sem_open("/is_died_sem", O_CREAT, 0777, 1);
+	if (info->forks == SEM_FAILED || info->last_eat_time_sem == SEM_FAILED
 		|| info->current_meal_sem == SEM_FAILED || info->print_sem == SEM_FAILED
 		|| info->is_died_sem == SEM_FAILED)
 		return (-1);

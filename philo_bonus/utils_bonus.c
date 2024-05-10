@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vbarsegh <vbarsegh@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/05/08 18:34:58 by vbarsegh          #+#    #+#             */
+/*   Updated: 2024/05/08 18:36:00 by vbarsegh         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo_bonus.h"
 
 int	check_die(t_philo *philo)
@@ -23,7 +35,8 @@ int	eat_all_neccessary_section_of_spagetti(t_philo *philo)
 	if (philo->info->number_of_times_each_philosopher_must_eat < 0)
 		return (0);
 	sem_wait(philo->info->current_meal_sem);
-	if (philo->current_meal == philo->info->number_of_times_each_philosopher_must_eat)
+	if (philo->current_meal
+		== philo->info->number_of_times_each_philosopher_must_eat)
 	{
 		sem_wait(philo->info->is_died_sem);
 		philo->info->is_died = -1;

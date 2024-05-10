@@ -6,7 +6,7 @@
 /*   By: vbarsegh <vbarsegh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:43:01 by vbarsegh          #+#    #+#             */
-/*   Updated: 2024/05/02 18:22:05 by vbarsegh         ###   ########.fr       */
+/*   Updated: 2024/05/10 14:08:43 by vbarsegh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	philo_take_a_forks(t_philo *philo,
 	pthread_mutex_lock(right_fork);
 	print_mutex(philo, "has taken a fork\n");
 	print_mutex(philo, "is eating\n");
-	my_usleep(philo->info->time_to_eat);
+	my_usleep(philo, philo->info->time_to_eat);
 	pthread_mutex_unlock(left_fork);
 	pthread_mutex_unlock(right_fork);
 	get_last_eat_time_mutex(philo);
@@ -81,7 +81,7 @@ int	philo_take_a_forks(t_philo *philo,
 	philo->current_meal++;
 	pthread_mutex_unlock(&philo->current_meal_mutex);
 	print_mutex(philo, "is sleeping\n");
-	my_usleep(philo->info->time_to_sleep);
+	my_usleep(philo, philo->info->time_to_sleep);
 	print_mutex(philo, "is thinking\n");
 	return (0);
 }
