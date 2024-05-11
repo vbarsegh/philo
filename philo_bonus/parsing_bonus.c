@@ -6,7 +6,7 @@
 /*   By: vbarsegh <vbarsegh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 18:27:12 by vbarsegh          #+#    #+#             */
-/*   Updated: 2024/05/08 18:27:34 by vbarsegh         ###   ########.fr       */
+/*   Updated: 2024/05/11 17:20:07 by vbarsegh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	init_philo(t_info *info)
 		info->philos[i].last_eat_time = LLONG_MAX;
 		info->philos[i].info = info;
 	}
-	sem_close_and_unlink_func(info);
+	sem_close_and_unlink_func(info);//amenaskzbic xorhurda trvum close u unlink anel,vortev mardes karoxa minchev et et anunov lini u xndir ta 
 	if (sem_open_function(info) == -1)
 	{
 		free(info->philos);

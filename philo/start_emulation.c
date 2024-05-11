@@ -6,7 +6,7 @@
 /*   By: vbarsegh <vbarsegh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:43:01 by vbarsegh          #+#    #+#             */
-/*   Updated: 2024/05/10 14:08:43 by vbarsegh         ###   ########.fr       */
+/*   Updated: 2024/05/11 17:04:07 by vbarsegh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	start_emulation(t_info *info)
 	get_time();//esi ete chlini data race enq unenalu vortev sax filoneri hamar start-@ 0a linelu u nuyn jmkum sax philonery dimelu en et startin//sranov nenc enq are vor start-@ arajan vor data racechlni
 	while (++i < info->num_of_philos)
 		pthread_create(&info->philos[i].tid, NULL,
-			(void *)about_philos, &info->philos[i]);
+			(void *)about_philos, &info->philos[i]);//philoner-i qanakaov thread-eri enq bajanaum mer main-@
 	while (1)
 	{
 		if (check_die(info) == -1
@@ -45,16 +45,17 @@ void	*about_philos(t_philo *philo)
 {
 	pthread_mutex_t	*left_fork;
 	pthread_mutex_t	*right_fork;
-
+//qani vor filonery klor krugov en nstac u yur. filo-i aranqnerum enq drvac fork-ery yur. filo unenalu e ir aj ev dzax fork-ery
 	left_fork = &philo->info->forks[philo->id];
-	right_fork = &philo->info->forks[(philo->id + 1)
+	right_fork = &philo->info->forks[(philo->id + 1)//hamarakalum enq fork-er@
 		% (philo->info->num_of_philos)];
+
 	get_last_eat_time_mutex(philo);//sranov filoneri kyanqi skizbn enq tali
 	if ((philo->id + 1) % 2 == 0)
-		usleep(500);
+		usleep(500);//bolor zuyg hamarov filonerin qncnum enq vor arajiny kentery vercnen fork-ery,tenc enq anum vor dead lock chunenanq
 	while (is_died(philo) != -1)
 	{
-		if (philo_take_a_forks(philo, left_fork, right_fork) == 1)
+		if (philo_take_a_forks(philo, left_fork, right_fork) == 1)//es funkcian enqan kkatarvi minchev mi filo chmerni
 			return (NULL);
 	}
 	return (NULL);
@@ -90,6 +91,6 @@ void	print_mutex(t_philo *philo, char *str)
 {
 	pthread_mutex_lock(&philo->info->print_mutex);
 	if (is_died(philo) != -1)
-		printf("%lld %d %s", get_time(), philo->id + 1, str);
+		printf("%lld %d %s", get_time(), philo->id + 1, str);//es if-@ nra  hamar enq stugumm vor ete meky merni el dranic heto inch katarvi printf-ov menq chgrenq et texi unecacy,karan depqer linen vor merneluc heto vorosh filoner hascnenq qnen,het dnen fork-@ ev aylb,es tvarkacners vor printf chanenq if-@ drel enq 
 	pthread_mutex_unlock(&philo->info->print_mutex);
 }

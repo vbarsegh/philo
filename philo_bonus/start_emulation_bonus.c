@@ -6,7 +6,7 @@
 /*   By: vbarsegh <vbarsegh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/08 18:28:10 by vbarsegh          #+#    #+#             */
-/*   Updated: 2024/05/08 18:30:31 by vbarsegh         ###   ########.fr       */
+/*   Updated: 2024/05/11 17:27:59 by vbarsegh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,12 @@ void	start_emulation(t_info *info)
 		info->philos[i].pid = fork();
 		if (info->philos[i].pid == 0)
 			func(&info->philos[i]);
-	}
+	}//stex arvuma hetevyal@,filoneri qanakov fork-enq  anum u amen forki mej thread enq bacum,tread enq bacum vori shnorhiv karox enq hetevel filoneri aroryayin,merelen te utum qnum mtacum en
 	i = -1;
 	while (++i < info->num_of_philos)
 	{
-		waitpid(-1, &status, 0);
-		if (WEXITSTATUS(status) == 1)
+		waitpid(-1, &status, 0);//-1-@ nsh. e vor cankacac child proces vor avartvi waitpid khamarvi arvac u dranic nerqev inch grvacer katarvi,menq kill enq anelu procesnery en jmk erb filoneri mah grancvi,isk ete procesnery avartvum en bayc voch mahov ayl pahanjvac qanaky utelu shnorhiv,kill chenq anelu
+		if (WEXITSTATUS(status) == 1)//ete harc arajana ba xi enq en verevi while -@ anumm et nra hamara vor ete pahanjvac qanaky utelu hmara prce procesy bayc menak et filo-i procesna prce,menq pti spasenq vor bolory uten pahanjvac qanakaov nor prcsnenq et hamapatasaxan filo-i procesy
 		{
 			i = -1;
 			while (++i < info->num_of_philos)
@@ -57,7 +57,7 @@ void	*about_philos(t_philo *philo)
 	{
 		if (check_die(philo) == -1
 			|| eat_all_neccessary_section_of_spagetti(philo) == 1)
-			break ;
+			break ;//sa thread-n e, vori mijocov hetevum enq procesnerum texi unecoxutyan masin
 	}
 	return (NULL);
 }
