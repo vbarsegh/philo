@@ -6,7 +6,7 @@
 /*   By: vbarsegh <vbarsegh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/30 15:44:30 by vbarsegh          #+#    #+#             */
-/*   Updated: 2024/05/11 16:46:48 by vbarsegh         ###   ########.fr       */
+/*   Updated: 2024/07/03 19:33:52 by vbarsegh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,13 @@ void	my_usleep(t_philo *philo, long long time)
 	t2 = get_time();
 	while (get_time() - t2 <= time)
 	{
+		pthread_mutex_lock(&philo->info->is_died_mutex);
 		if (philo->info->is_died == -1)//sa anum enq vor ete merela bayc sleep-i jmky shat mec a ,el chspasi qni helni,miuangamic prcni cragiry,nu gri died u prcni chspasi el time_to_sleep
+		{
+			pthread_mutex_unlock(&philo->info->is_died_mutex);
 			break ;
+		}
+		pthread_mutex_unlock(&philo->info->is_died_mutex);
 		usleep(500);
 	}
 }
